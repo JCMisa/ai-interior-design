@@ -7,6 +7,8 @@ import {
   LayersIcon,
 } from "lucide-react";
 import Button from "components/ui/Button";
+import Upload from "components/Upload";
+import { useNavigate } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -16,6 +18,16 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  const handleUploadComplete = async (base64Image: string) => {
+    const newId = Date.now().toString();
+
+    navigate(`/visualizer/${newId}`);
+
+    return true;
+  };
+
   return (
     <div className="home">
       <Navbar />
@@ -26,12 +38,12 @@ export default function Home() {
             <div className="pulse"></div>
           </div>
 
-          <p>Introducing Terior 2.0</p>
+          <p>Introducing Roomify</p>
         </div>
 
-        <h1>Build beautiful spaces at the speed of thought with Terior</h1>
+        <h1>Build beautiful spaces at the speed of thought with Roomify</h1>
         <p className="subtitle">
-          Terior is an AI-first design environment that helps you visualize,
+          Roomify is an AI-first design environment that helps you visualize,
           render, and ship architectural projects faster than ever.
         </p>
 
@@ -57,7 +69,7 @@ export default function Home() {
               <p>Supports JPG, PNG formats up to 10MB</p>
             </div>
 
-            <p>Upload images</p>
+            <Upload onComplete={handleUploadComplete} />
           </div>
         </div>
       </section>

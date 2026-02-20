@@ -30,7 +30,7 @@ const Navbar = () => {
         <div className="left">
           <div className="brand">
             <BoxIcon className="logo" />
-            <span className="name">Terior</span>
+            <span className="name">Roomify</span>
           </div>
 
           <ul className="links">
